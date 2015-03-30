@@ -1,5 +1,5 @@
 # This little 'rake-toolio' called lessick 
-# let my girl, Regina, doing her less compile jobs
+# lets my girl, Regina, doing her less compile jobs
 # super easily.
 # 
 # To execute you need
@@ -38,7 +38,7 @@ module OS
 end
 
 ###########################################################
-### Constants #############################################
+### Some usefull Constants ################################
 ###########################################################
 # "." means move relatively forward from the current location
 SOURCE = "."
@@ -53,11 +53,17 @@ CONFIG = {
     # TODO put all less files in here
     'input' => [
         "bootstrap.less"
-        ],
-    'output' => "bootstrap.css"
+        ]
 }
 
+DIR_CSS = File.join( CONFIG['css'], "*" )
+CLEAN.include(FileList[DIR_CSS].include('*.css'))
+
 COMPRESS_CSS = true
+
+###########################################################
+### Super important Emojis!!! #############################
+###########################################################
 
 STAR = "\xF0\x9F\x8C\xA0"
 RAINBOW = "\xF0\x9F\x8C\x88"
@@ -66,9 +72,6 @@ PANDAS = PANDA + PANDA + PANDA
 THUMBS_UP = "\xF0\x9F\x91\x8D "
 BEER_MUG = "\xF0\x9F\x8D\xBA "
 BEER_MUGS = BEER_MUG + BEER_MUG + BEER_MUG
-
-DIR_CSS = File.join( CONFIG['css'], "*" )
-CLEAN.include(FileList[DIR_CSS].include('*.css'))
 
 ###########################################################
 ### Less Tasks ############################################
@@ -95,13 +98,13 @@ namespace 'lessick' do
     end
     
     desc "Let Regina zaubers only one special picked less file into css (lessFileName incl. path to the file)"
-    task :zauber_one, :lessFileName do |t, args|
+    task :zauber_one, :less_file_name do |t, args|
         less_directory = CONFIG['less']
         css_directory = CONFIG['css']
         
         # set input/output files
-        input  = File.join( less_directory, args.lessFileName )
-        output = File.join( css_directory, CONFIG['output'] )
+        input  = File.join( less_directory, args.less_file_name )
+        output = File.join( css_directory, File.basename(args.less_file_name).sub(/[^.]+\z/,"css"))
         
         # create css output directory if it is not there...
         Dir.mkdir(css_directory) unless Dir.exists?(css_directory)
