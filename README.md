@@ -1,7 +1,7 @@
 # lessick #
 
 a tiny rake script to do a bit less zauber.
-It lives to serve Regina. So it can compiles all your given less files to a given directory of your choice (#magic).
+It lives to serve Regina. It can compiles all her given less files to a given directory of her choice (#magic).
 
 ** You have to ad(d)just the less and css file directories**
 
