@@ -8,8 +8,9 @@ It lives to serve Regina. It can compiles all her given less files to a given di
 ### What do I need for running that shit? ###
 
 * Ruby 1.9 up 
-* `therubyracer` gem
-* the less gem
+needed gems
+* `therubyracer`
+* `less`
 
 On MacOs I would prefer installing everything with [homebrew](http://brew.sh/)
 
